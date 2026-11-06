@@ -1,0 +1,375 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "AVRXT Docs",
+  "colors": {
+    "primary": "#A3A3A3",
+    "light": "#E5E5E5",
+    "dark": "#404040"
+  },
+  "appearance": {
+    "default": "dark",
+    "strict": true
+  },
+  "background": {
+    "color": {
+      "light": "#FAFAFA",
+      "dark": "#050505"
+    }
+  },
+  "fonts": {
+    "heading": {
+      "family": "Outfit"
+    },
+    "body": {
+      "family": "Inter"
+    }
+  },
+  "logo": {
+    "light": "/assets/logo-black.png",
+    "dark": "/assets/logo-white.png",
+    "href": "/"
+  },
+  "favicon": "/assets/favicon.ico",
+  "navbar": {
+    "links": [
+      {
+        "label": "Website",
+        "href": "https://www.avrxt.dev"
+      },
+      {
+        "label": "Status",
+        "href": "https://www.avrxt.dev/status"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Get in touch",
+      "href": "https://www.avrxt.dev/contact"
+    }
+  },
+  "search": {
+    "prompt": "Search the documentation..."
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Start here",
+            "pages": [
+              "index",
+              "quickstart",
+              "website-overview"
+            ]
+          },
+          {
+            "group": "Explore the website",
+            "pages": [
+              "guides/profile",
+              "guides/muzix",
+              "guides/newsletter",
+              "guides/guestbook",
+              "guides/contact",
+              "guides/status",
+              "guides/interactions"
+            ]
+          },
+          {
+            "group": "Privacy & access",
+            "pages": [
+              "guides/data-requests",
+              "guides/private-tools"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Tools",
+        "groups": [
+          {
+            "group": "The toolbox",
+            "pages": [
+              "guides/tools"
+            ]
+          },
+          {
+            "group": "Network & email",
+            "pages": [
+              "tools/whatismyip",
+              "tools/portcheck",
+              "tools/mailfy",
+              "tools/dns"
+            ]
+          },
+          {
+            "group": "Type, media & input",
+            "pages": [
+              "tools/fontui",
+              "tools/spotmp3",
+              "tools/quote",
+              "tools/keytest"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API reference",
+        "groups": [
+          {
+            "group": "Essentials",
+            "pages": [
+              "api-reference/overview",
+              "api-reference/cors",
+              "api-reference/errors"
+            ]
+          },
+          {
+            "group": "Read endpoints",
+            "pages": [
+              "api-reference/health",
+              "api-reference/status",
+              "api-reference/link-preview",
+              "api-reference/now-playing"
+            ]
+          },
+          {
+            "group": "Music & weather",
+            "pages": [
+              "api-reference/music",
+              "api-reference/artwork",
+              "api-reference/weather"
+            ]
+          },
+          {
+            "group": "Website mutations",
+            "pages": [
+              "api-reference/forms"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Technical notes",
+        "groups": [
+          {
+            "group": "Build on a small budget",
+            "pages": [
+              "technical/free-services",
+              "technical/static-hosting"
+            ]
+          },
+          {
+            "group": "Domain email",
+            "pages": [
+              "technical/email-routing",
+              "technical/gmail-smtp"
+            ]
+          },
+          {
+            "group": "Personal notebook",
+            "pages": [
+              "notes/working-principles",
+              "notes/technical-log"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Field notes",
+        "groups": [
+          {
+            "group": "The notebook",
+            "pages": [
+              "notes/index",
+              "notes/learning-paths",
+              "notes/working-principles",
+              "notes/technical-log"
+            ]
+          },
+          {
+            "group": "Behind the website",
+            "pages": [
+              "notes/build-notes",
+              "notes/debugging-layout",
+              "notes/debugging-workflows"
+            ]
+          },
+          {
+            "group": "Build and contribute",
+            "pages": [
+              "notes/open-source",
+              "notes/contributing",
+              "notes/project-ideas",
+              "notes/starters"
+            ]
+          },
+          {
+            "group": "Developer recipes",
+            "pages": [
+              "notes/recipe-pagination",
+              "notes/recipe-cache",
+              "notes/recipe-forms"
+            ]
+          },
+          {
+            "group": "Quality and everyday work",
+            "pages": [
+              "notes/accessibility",
+              "notes/performance-lab",
+              "notes/api-debugging",
+              "notes/command-line",
+              "notes/bug-reports"
+            ]
+          },
+          {
+            "group": "From the archive",
+            "pages": [
+              "notes/welcome",
+              "notes/nxtdev"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Maintainer notes",
+        "groups": [
+          {
+            "group": "How it works",
+            "pages": [
+              "maintaining/architecture",
+              "maintaining/local-development",
+              "maintaining/configuration",
+              "maintaining/caching",
+              "maintaining/media"
+            ]
+          },
+          {
+            "group": "Keeping it running",
+            "pages": [
+              "maintaining/deployment",
+              "maintaining/documentation",
+              "maintaining/email",
+              "maintaining/security",
+              "maintaining/search-seo",
+              "maintaining/troubleshooting",
+              "maintaining/releases"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view"
+    ],
+    "display": "header"
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs",
+    "codeblocks": {
+      "theme": "github-dark-default"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/aviorxt",
+      "instagram": "https://www.instagram.com/aviorxt/",
+      "website": "https://www.avrxt.dev"
+    },
+    "links": [
+      {
+        "header": "Explore",
+        "items": [
+          {
+            "label": "Personal website",
+            "href": "https://www.avrxt.dev"
+          },
+          {
+            "label": "Profile",
+            "href": "https://me.avrxt.dev"
+          },
+          {
+            "label": "Muzix",
+            "href": "https://muzix.avrxt.dev"
+          }
+        ]
+      },
+      {
+        "header": "Stay connected",
+        "items": [
+          {
+            "label": "Contact",
+            "href": "https://www.avrxt.dev/contact"
+          },
+          {
+            "label": "Newsletter",
+            "href": "https://www.avrxt.dev/subscribe"
+          },
+          {
+            "label": "with \ud83e\ude76 @avrxt",
+            "href": "https://www.instagram.com/aviorxt/"
+          }
+        ]
+      },
+      {
+        "header": "Policies",
+        "items": [
+          {
+            "label": "Privacy",
+            "href": "https://www.avrxt.dev/legal/privacy"
+          },
+          {
+            "label": "Terms",
+            "href": "https://www.avrxt.dev/legal/terms"
+          },
+          {
+            "label": "Security",
+            "href": "https://www.avrxt.dev/legal/security"
+          }
+        ]
+      }
+    ]
+  },
+  "seo": {
+    "indexing": "navigable",
+    "metatags": {
+      "og:site_name": "AVRXT Docs",
+      "og:locale": "en_IN",
+      "author": "avrxt (aviorxt)"
+    }
+  },
+  "api": {
+    "playground": {
+      "display": "none"
+    },
+    "examples": {
+      "languages": [
+        "curl",
+        "javascript",
+        "python"
+      ]
+    },
+    "openapi": "openapi.json"
+  },
+  "redirects": [
+    {
+      "source": "/welcome",
+      "destination": "/notes/welcome",
+      "permanent": true
+    },
+    {
+      "source": "/nxtdev.xyz",
+      "destination": "/notes/nxtdev",
+      "permanent": true
+    },
+    {
+      "source": "/platform-overview",
+      "destination": "/website-overview",
+      "permanent": true
+    }
+  ]
+}

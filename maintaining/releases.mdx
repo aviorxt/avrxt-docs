@@ -1,0 +1,37 @@
+---
+title: "Before a production release"
+description: "A practical content, design, testing, deployment, and rollback standard for the website owner."
+---
+
+A release checklist supports a decision; it cannot guarantee zero defects, legal compliance, or a particular uptime.
+
+## Content and implementation
+
+- Check factual claims against maintained code and current provider configuration.
+- Review desktop, mobile, keyboard access, reduced motion, and form states.
+- Review public/private data boundaries and remove real secrets from examples.
+- Run the repository’s tests, lint, build, and required security checks.
+
+## Documentation checks
+
+- Run `npm run check` and `npm run links` in this repository.
+- Review the landing page, a tool guide, an archived note, and an endpoint.
+- Check phone-width navigation, long code blocks, tables, and copied examples.
+- Keep API snapshots and narrative contracts consistent.
+
+## Publishing and cutover
+
+Obtain the owner’s approval for pushes, live deployment, DNS changes, or real newsletter delivery when required by the work’s scope. Deploy and verify the new docs domain before releasing old-route redirects.
+
+Inspect both the GitHub run and hosting deployment. Then verify legacy URLs, current sitemaps, images, and normal public flows. A push alone is not a completed release.
+
+## Rollback
+
+Keep a known good version and retain the original CMS records and assets until the migration is accepted. Restore only the affected application or Worker; do not rotate shared secrets or clear unrelated data as a routine rollback.
+
+## Related reading
+
+- [Deployment](/maintaining/deployment)
+- [Documentation workflow](/maintaining/documentation)
+- [Troubleshooting](/maintaining/troubleshooting)
+

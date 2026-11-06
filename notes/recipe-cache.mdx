@@ -1,0 +1,42 @@
+---
+title: "Recipe: a bounded cache and a local rate limit"
+sidebarTitle: "Caching and rate limits"
+description: "Understand small process-local examples, expiry, memory bounds, and why shared deployments need a different coordination model."
+---
+
+A cache reuses an earlier result; a rate limit controls how often an action is accepted. They solve different problems. Both need explicit keys, bounds, and failure behavior.
+
+## A short-lived local cache
+
+```javascript
+const cache = new Map();
+export function remember(key, value, ttlMs, now = Date.now()) {
+  if (!Number.isFinite(ttlMs) || ttlMs <= 0) throw new RangeError('ttlMs');
+  if (cache.size >= 100 && !cache.has(key)) {
+    cache.delete(cache.keys().next().value);
+  }
+  cache.set(key, { value, expires: now + ttlMs });
+}
+export function readCached(key, now = Date.now()) {
+  const entry = cache.get(key);
+  if (!entry || entry.expires <= now) {
+    cache.delete(key);
+    return { hit: false };
+  }
+  return { hit: true, value: entry.value };
+}
+```
+
+This example caps entry count and expires values on read. It uses insertion-order eviction, not a full least-recently-used algorithm. It does not bound the byte size of values, coordinate concurrent fills, or survive a process restart. Only cache small public values with a known policy.
+
+## Rate-limit decisions
+
+A fixed-window limiter counts accepted attempts for a key during one interval. Choose the key and interval based on the action. An IP address can be shared by many people; an email address is personal data. Do not trust an arbitrary forwarded-IP header unless your deployment’s trusted proxy establishes it.
+
+The downloadable recipe module includes a bounded, process-local fixed-window example. Use it to study expiry and test boundaries, not as distributed abuse protection. Multiple server instances each have their own count; restarting a process resets it. A shared store needs atomic operations and a deliberate failure policy. Capacity eviction also resets an evicted key’s allowance, so a stream of new keys can weaken this example. It is intentionally unsuitable as a security boundary.
+
+## Safe production boundaries
+
+Do not publicly cache authentication, private profile data, confirmation tokens, Set-Cookie responses, or mutations. Avoid storing errors as successful values. For costly or sensitive actions, decide whether a limiter outage rejects the action or permits a limited fallback. Neither behavior is universally correct.
+
+Test expiry, an exact limit boundary, independent keys, and the chosen eviction behavior. Read [AVRXT’s cache policy](/maintaining/caching) for the actual shared Worker design, and [download the learning module](/assets/starters/developer-recipes.zip) for runnable examples.

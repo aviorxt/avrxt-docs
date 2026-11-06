@@ -1,0 +1,41 @@
+---
+title: "Working on the website locally"
+description: "Install locked dependencies, configure a safe local environment, and run the website checks."
+---
+
+Use the Node version selected by the repository workflow; the current main-site workflow uses Node 22. Install from the committed lockfile.
+
+```bash
+npm ci
+npm run dev
+```
+
+## Local configuration
+
+Copy `.env.example` to an ignored local environment file and configure only the features needed for your task. Use separate local credentials and cache namespaces. Do not point an automated test at private production records just because local configuration is incomplete.
+
+## Next.js conventions
+
+Read `AGENTS.md` and the relevant guide bundled in `node_modules/next/dist/docs/` before modifying application code. The repository uses a particular Next.js version whose conventions may differ from older examples.
+
+## Required checks
+
+```bash
+npm test
+npm run lint
+npm run build
+npm audit --omit=dev
+```
+
+Run the appropriate Worker dry-runs when modifying gateway code. When another frontend is already running locally, choose a distinct port, for example `npm run dev -- --port 3002`.
+
+## Common local differences
+
+Data-dependent views may be unavailable without credentials. Local documentation search can require Mintlify authentication. Neither is a reason to weaken authorization, bypass origin checks, or publish an unverified production change.
+
+## Related reading
+
+- [Configuration](/maintaining/configuration)
+- [Docs development](/maintaining/documentation)
+- [Release checklist](/maintaining/releases)
+

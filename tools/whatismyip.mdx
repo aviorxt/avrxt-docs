@@ -1,0 +1,34 @@
+---
+title: "Inspect your public IP address"
+sidebarTitle: "What is my IP?"
+description: "See the public address observed by the website, with approximate network and location information."
+---
+
+See the public address observed by the website, with approximate network and location information. This guide explains the utility on avrxt’s personal website and helps you interpret its result without drawing conclusions the check cannot support.
+
+<Card title="Open What is my IP?" href="https://www.avrxt.dev/tools/whatismyip" icon="arrow-up-right-from-square">Use the live tool.</Card>
+
+## Get started
+
+Open the tool on the network you want to inspect. Read the address and IP version first, then compare the ISP, location, and timezone fields. If checking a VPN, reconnect and refresh to compare the observed address.
+
+## Understand the result
+
+The address represents the public connection visible to the service. Location is a network estimate, not GPS, a home address, or proof of identity. A carrier gateway or VPN exit can appear in a different city.
+
+## Limitations and troubleshooting
+
+Enrichment uses ipwho.is, which receives the public IP being queried. Missing enrichment can leave only request-header information. If an address differs from your device settings, a router, carrier network, or proxy may explain the difference.
+
+## Use it responsibly
+
+Only test systems you own or have permission to inspect. Submit the minimum information needed and avoid credentials, private tokens, and unrelated personal data. Network observations depend on the service’s vantage point and can change over time. Repeated requests may be rate limited; wait before retrying rather than repeatedly submitting a failing query.
+
+## Report a problem
+
+Include the tool name, approximate time, browser, expected result, and a redacted example in a [contact message](/guides/contact). Do not send passwords or private network details. Check the [status guide](/guides/status) when multiple tools appear unavailable.
+
+<CardGroup cols={2}>
+<Card title="All tools" href="/guides/tools">Find the utility that fits your task.</Card>
+<Card title="Privacy and data" href="/guides/data-requests">Understand privacy information and request options.</Card>
+</CardGroup>

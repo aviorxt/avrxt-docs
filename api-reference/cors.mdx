@@ -1,0 +1,31 @@
+---
+title: "Origins, authentication, and limits"
+description: "Read-only endpoints, website-only mutations, browser origins, and safe retry behavior."
+---
+
+The API supports the personal website’s interfaces. Public reads and owner-only operations have different requirements; an endpoint’s existence does not make it a general integration service.
+
+## Browser origins
+
+The Worker has an explicit origin allowlist. A successful terminal request does not prove an arbitrary browser origin may read the same response. CORS is not authentication. Do not expand the allowlist simply to make an embedded example work.
+
+This docs site disables the API playground so readers do not accidentally submit forms, subscribe addresses, or rely on unsupported browser origins.
+
+## Write requests
+
+Same-origin JSON validation, body limits, and endpoint-specific rules apply to website forms. Newsletter confirmation, unsubscribe, and verified data-request actions require explicit POST operations. Opening a GET link must not change those states.
+
+## Rate limits and retries
+
+The gateway, newsletter routes, and owner-only mail generation do not have one universal quota. A `429` may include `Retry-After`; honor it and bound retries. Do not automatically repeat an ambiguous contact submission.
+
+## Secrets
+
+Read-only examples do not require an administrator token. Worker secrets, service-role keys, provider keys, webhook URLs, and session tokens must never appear in browser examples or public issues.
+
+## Related reading
+
+- [Error handling](/api-reference/errors)
+- [Website form boundaries](/api-reference/forms)
+- [Caching](/maintaining/caching)
+

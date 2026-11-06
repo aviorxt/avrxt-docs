@@ -1,0 +1,33 @@
+---
+title: "Security and private boundaries"
+description: "Server-side authorization, origin checks, private-data handling, and responsible vulnerability reporting."
+---
+
+These notes describe implementation boundaries, not an audit or certification of the personal website.
+
+## Authentication and authorization
+
+Owner actions verify the active identity on the server. Current Discord membership or role checks are not replaced by an old client display. Guestbook sign-in is a separate scope and does not grant access to private maintenance features.
+
+## Input and origin checks
+
+Write routes validate origin, JSON content type, body size, and fields. Network tools restrict private or reserved targets where applicable. Do not disable authentication, certificate checks, or private-network protections to make a preview work.
+
+## Private data
+
+Keep notes, storage records, subscriber lists, message bodies, tokens, and webhook URLs out of public caches, logs, and docs. Public Supabase reads rely on explicit row-level policies. Server/provider secrets stay in encrypted deployment configuration.
+
+## Reporting a vulnerability
+
+Follow the [security page](https://www.avrxt.dev/legal/security). Share a minimal sanitized reproduction. Do not access someone else’s records, publish live tokens, or collect unnecessary personal data as evidence.
+
+## Legal and operational claims
+
+Documentation cannot certify GDPR/DPDP compliance, audited security, a particular uptime, or guaranteed support response. Published website policies govern usage; implementation notes explain how current code behaves.
+
+## Related reading
+
+- [Configuration](/maintaining/configuration)
+- [Privacy requests](/guides/data-requests)
+- [Release checklist](/maintaining/releases)
+

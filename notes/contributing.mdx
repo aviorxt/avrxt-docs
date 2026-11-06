@@ -1,0 +1,31 @@
+---
+title: "Make your first open-source contribution useful"
+sidebarTitle: "First contributions"
+description: "Choose a small issue, reproduce it, follow project guidelines, and submit a clear pull request with evidence."
+---
+
+A useful contribution makes a maintainer’s next decision easier. It can be a precise issue report, a corrected example, or a small implementation change. You do not need to begin by redesigning a project.
+
+## Understand the repository
+
+Read the README, license, contribution guide, code of conduct, and relevant issue discussion. Check whether a proposed change is already being worked on. A label such as good first issue is a discovery aid, not a guarantee that the task is still available or easy.
+
+## Bound the problem
+
+Write down the expected behavior, actual behavior, and smallest reproduction. Confirm the affected version. If the proposed change alters a public interface or design direction, discuss the approach before investing in a large patch. Follow the project’s process rather than assuming every repository uses the same branch, formatting, or test rules.
+
+## Make a reviewable change
+
+Use the repository’s supported development setup and create a focused topic branch. Keep unrelated formatting and dependency updates out of the change. Add a test when it meaningfully demonstrates the bug or protects the new behavior; documentation corrections often need a build or link check instead.
+
+Inspect the final diff, including generated files, and remove secrets or local machine paths. Do not paste real credentials into a reproduction. Use a minimal fixture or a clearly marked placeholder.
+
+## Describe the result
+
+A pull request should explain the problem, resulting behavior, and validation. Link the relevant issue and mention any limitation a reviewer must assess. Screenshots help with visual changes; request and response examples help with an API contract. Avoid claiming broad testing when you ran only one case.
+
+## Work with feedback
+
+Answer questions directly and update the description when the final scope changes. Maintainers may decline a reasonable change because of compatibility or maintenance costs. A contribution is an offer of work, not a guarantee of merge or a grant of collaborator access.
+
+Follow [GitHub’s official contribution walkthrough](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-open-source) for the fork and pull-request process. Browse the [open-source directory](/notes/open-source) for projects to explore, and use the [bug-report guide](/notes/bug-reports) when a fix is not yet clear.

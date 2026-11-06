@@ -1,0 +1,40 @@
+---
+title: "Learning paths for small web projects"
+sidebarTitle: "Learning paths"
+description: "Follow a practical reading sequence to build a personal site, understand an API, launch consent-based email, or contribute a small fix."
+---
+
+Choose a path by its outcome. Each route ends with something you can demonstrate, not a claim that reading several pages makes a project production-ready. Work in a local or preview environment until the result is reviewable.
+
+## Build your first personal website
+
+1. Read [working principles](/notes/working-principles) and choose one purpose for the site.
+2. Start from the [static-site starter](/notes/starters), replacing example content with your own.
+3. Review [accessibility](/notes/accessibility), including keyboard focus and mobile forms.
+4. Follow [static hosting](/technical/static-hosting) and inspect a preview before changing DNS.
+5. Use the [performance worksheet](/notes/performance-lab) to record a baseline.
+
+**Done when:** a direct visit to every public page works, mobile navigation is usable, no private data is in the output, and you know how to restore the previous release.
+
+## Understand a small API
+
+1. Read [API debugging](/notes/api-debugging) and inspect a safe read response.
+2. Use the [JSON recipes](/notes/command-line) to inspect a saved non-sensitive fixture.
+3. Implement [pagination](/notes/recipe-pagination) in a local example.
+4. Compare [caching and rate limits](/notes/recipe-cache) and explain their different purposes.
+5. Read the [AVRXT API reference](/api-reference/overview) as a concrete contract example.
+
+**Done when:** invalid input, an empty result, a timeout, and a rate-limit response all have deliberate behavior.
+
+## Add domain email and a newsletter
+
+1. Separate inbound mail from outbound sending with [Cloudflare routing](/technical/email-routing).
+2. Read the [Gmail alias change](/technical/gmail-smtp) before relying on an older setup.
+3. Design [confirmation and retries](/notes/recipe-forms) before connecting a sender.
+4. Review [email maintenance](/maintaining/email) and unsubscribe handling.
+
+**Done when:** a controlled test address can confirm and unsubscribe, repeated confirmation is safe, and you can investigate an ambiguous send without sending duplicates. Do not test against a real audience without authorization.
+
+## Make a first contribution
+
+Pick a project from the [open-source directory](/notes/open-source), follow [contribution guidance](/notes/contributing), and prepare a [reproducible report](/notes/bug-reports). A small documentation improvement is a valid outcome. Follow the target project’s license and review process.

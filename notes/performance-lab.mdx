@@ -1,0 +1,47 @@
+---
+title: "Performance lab: measure before claiming a win"
+sidebarTitle: "Performance lab"
+description: "A repeatable experiment plan for animation, images, fonts, and page loading, with an honest results template."
+---
+
+<Note>No before-and-after benchmark is published here yet. This page provides a measurement protocol and results worksheet; it does not claim a score, frame rate, or speed improvement for AVRXT.</Note>
+
+## Define the observation
+
+Record the source revision, page, browser version, physical device, viewport, network conditions, and cache state. Use the same interaction in each run. A narrow desktop viewport is useful for layout testing but does not reproduce a phone’s CPU, memory, touch input, or thermal limits.
+
+## Choose the experiment
+
+| Area | Change one variable | Observe |
+| --- | --- | --- |
+| Motion | Pause one decorative layer | Main-thread activity, paint cost, interaction responsiveness |
+| Images | Compare appropriate source sizes | Transfer size, rendering delay, reserved layout space |
+| Fonts | Compare loading and fallback strategy | Text visibility and movement during loading |
+| Page loading | Remove one unnecessary resource | Request waterfall and critical rendering path |
+
+For web experience, distinguish loading, responsiveness, and visual stability. Core Web Vitals cover those concerns through LCP, INP, and CLS. Lab results and real-user data answer different questions; one local run is not a field-performance claim. See [Google’s Web Vitals guide](https://web.dev/articles/vitals).
+
+## Capture a baseline
+
+Use the browser’s performance tooling to record a repeatable sequence: load the page, wait for the same content state, scroll to the artwork, interact with it, then submit a non-mutating test interaction where available. Run several comparable trials and keep raw traces locally. Do not record private pages or real email submissions just to collect a trace.
+
+## Compare carefully
+
+Change one variable and repeat the sequence. Report the number of runs, spread, and environmental differences rather than selecting the best result. Check visual quality and accessibility after an optimization. Pausing offscreen decoration can help, but observation APIs and composited effects still need profiling in the actual page.
+
+## Results worksheet
+
+```text
+Experiment:
+Baseline revision / candidate revision:
+Device / browser / viewport:
+Network / cache conditions:
+Interaction sequence:
+Runs and raw artifact locations:
+Baseline observations:
+Candidate observations:
+Limitations and tradeoffs:
+Decision / rollback:
+```
+
+Keep this worksheet with the [technical log](/notes/technical-log) when real measurements are available. Read [layout debugging](/notes/debugging-layout) for reproduction steps and [Intersection Observer documentation](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) before using visibility to control optional work.

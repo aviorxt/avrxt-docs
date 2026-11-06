@@ -1,0 +1,33 @@
+---
+title: "Technical log: documentation and website changes"
+sidebarTitle: "Technical log"
+description: "A dated record of the documentation migration, preserved articles, technical guides, and their release status."
+---
+
+This log separates prepared work from released behavior. Entries describe verified repository changes and checks, rather than implying that a local preview is already public.
+
+## 6 November 2026 — Documentation migration prepared
+
+**Status: local preview; publication pending owner approval.**
+
+The documentation is being moved from the main website into a separate Mintlify project intended for `docs.avrxt.dev`. The main-site changes prepare removal of the embedded editor and documentation administration links, with redirects for the old public article URLs. Publishing those redirects depends on the new documentation hostname being ready.
+
+Two published articles were preserved from the old editor. The draft view contained no unpublished articles at the time of the check. The original source records are retained with the migration files; no production database rows or media were deleted for this preparation.
+
+## 6 November 2026 — Tool reference expanded
+
+**Status: local preview.**
+
+All eight tools have dedicated guides covering use, result interpretation, limitations, and troubleshooting. The Spotify tool is documented as an official preview embed, not an audio downloader. Network checks explicitly explain their observation point and what a successful result cannot prove.
+
+## 6 November 2026 — Practical technical notebook added
+
+**Status: editorial content in local preview.**
+
+New guides cover static hosting, evaluating free service tiers, Cloudflare domain email routing, and Gmail SMTP. Official sources were reviewed for current provider behavior. The Gmail guide includes Google’s announced January 2027 third-party Send as change instead of presenting an older alias workaround as a permanent solution.
+
+## Reading future entries
+
+A useful release entry names the affected area, visible behavior, validation, and any migration or rollback requirement. Deployment dates are recorded only after a release is verified. Private incident details, credentials, recipient data, and administrative session URLs do not belong in this public log.
+
+See [release practice](/maintaining/releases), [documentation maintenance](/maintaining/documentation), and the [original welcome note](/notes/welcome) for related context.

@@ -1,0 +1,31 @@
+---
+title: "Website forms are not a bulk API"
+description: "Contact, newsletter, unsubscribe, and verified data-request flow boundaries."
+---
+
+Use the website’s public forms rather than treating their routes as unrestricted third-party integrations.
+
+| Flow | Interface | Important behavior |
+| --- | --- | --- |
+| Contact | Main website `/contact` | Same-origin JSON; accepted messages go to personal review |
+| Main updates | Main website `/subscribe` | Confirmation before activation |
+| Main unsubscribe | Recipient-specific email link | GET reads state; explicit POST applies preferences |
+| Data request | Main website `/delete-request` | Inbox confirmation followed by manual scope review |
+| Muzix snapshot | Muzix subscribe form | Separate Resend segment; consent and confirmation |
+
+## Muzix newsletter routes
+
+The Worker handles POST requests to `/v1/music/subscribe`, `/v1/music/confirm`, and `/v1/music/unsubscribe`. Subscribe requires a valid email and `consent: true`; the other actions use signed, purpose-specific tokens.
+
+An accepted subscribe request means a confirmation email was requested. It does not prove delivery or active segment membership. Provider-level unsubscribe preferences are preserved.
+
+## Safe handling
+
+Never put real recipient addresses, private tokens, or webhook URLs in shared examples. Do not automatically retry ambiguous message submissions. Origin checks, JSON validation, size limits, and route-specific rate limits apply before provider calls.
+
+## Related reading
+
+- [Contact](/guides/contact)
+- [Newsletter](/guides/newsletter)
+- [Privacy requests](/guides/data-requests)
+

@@ -1,0 +1,34 @@
+---
+title: "Check email syntax and MX records"
+sidebarTitle: "Mailfy"
+description: "Inspect an address format and domain mail routing without sending a message or claiming mailbox verification."
+---
+
+Inspect an address format and domain mail routing without sending a message or claiming mailbox verification. This guide explains the utility on avrxt’s personal website and helps you interpret its result without drawing conclusions the check cannot support.
+
+<Card title="Open Mailfy" href="https://www.avrxt.dev/tools/mailfy" icon="arrow-up-right-from-square">Use the live tool.</Card>
+
+## Get started
+
+Enter an email address, submit the check, and read the syntax result before reviewing the MX hosts. Check for accidental spaces or a misspelled domain when the format fails.
+
+## Understand the result
+
+A valid format means the address passed the tool’s syntax rules. MX records describe a domain’s advertised incoming mail routing; lower preference values normally take priority. They do not prove a mailbox exists or that a message will reach the inbox.
+
+## Limitations and troubleshooting
+
+Mailfy does not send a test message or verify ownership. Missing MX records are a lookup finding, not universal proof that delivery is impossible: other mail-routing behavior and temporary DNS problems can matter. For delivery failures, use the sender provider’s delivery report and inspect authentication records.
+
+## Use it responsibly
+
+Only test systems you own or have permission to inspect. Submit the minimum information needed and avoid credentials, private tokens, and unrelated personal data. Network observations depend on the service’s vantage point and can change over time. Repeated requests may be rate limited; wait before retrying rather than repeatedly submitting a failing query.
+
+## Report a problem
+
+Include the tool name, approximate time, browser, expected result, and a redacted example in a [contact message](/guides/contact). Do not send passwords or private network details. Check the [status guide](/guides/status) when multiple tools appear unavailable.
+
+<CardGroup cols={2}>
+<Card title="All tools" href="/guides/tools">Find the utility that fits your task.</Card>
+<Card title="Privacy and data" href="/guides/data-requests">Understand privacy information and request options.</Card>
+</CardGroup>

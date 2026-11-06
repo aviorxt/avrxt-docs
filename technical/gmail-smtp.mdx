@@ -1,0 +1,35 @@
+---
+title: "Gmail SMTP, aliases, and the 2027 change"
+sidebarTitle: "Gmail SMTP and aliases"
+description: "Understand Gmail SMTP authentication, custom-domain sending, and the announced end of third-party Send as support."
+---
+
+<Warning>Google’s current help page says third-party-address Send as support ends in January 2027. Do not build a new long-term custom-domain setup around that feature. Google Workspace aliases and other Gmail addresses you own are treated differently.</Warning>
+
+## Forwarding is not SMTP
+
+Forwarding delivers incoming mail into another inbox. SMTP submits outgoing messages through a sender. A forwarding alias does not have its own mailbox password or automatically authorize Gmail to send authenticated mail for that domain.
+
+## Gmail connection settings
+
+For an application legitimately sending as an authenticated Gmail user, Google documents `smtp.gmail.com`. Port 465 uses implicit TLS; port 587 uses STARTTLS. Match the encryption mode to the port and client. Prefer supported OAuth sign-in. Keep credentials server-side, outside public source, browser JavaScript, screenshots, and example configuration files.
+
+Google recommends modern sign-in. An app password is an option only for eligible accounts with two-step verification; organizational policy and account protection can make it unavailable. It is not your normal Google password. Revoke unused app credentials when the application no longer needs access.
+
+## Existing Send as setups
+
+While supported for your account, desktop Gmail exposes Accounts and Import, then Send mail as. Adding an address requires ownership verification and, where requested, the outgoing provider’s SMTP configuration. Do not assume Gmail SMTP authenticates every arbitrary domain From address. Successful submission does not prove domain alignment: inspect the received authentication results.
+
+For an existing third-party alias, record the addresses, clients, and sending provider you rely on. Plan a compatible mailbox or email client before January 2027, and recheck Google’s official notice when implementing the migration. Forwarding and Gmail’s third-party sending feature are different dependencies.
+
+## Delivery problems
+
+Authentication errors can come from an incorrect TLS mode, revoked credentials, account eligibility, or provider policy. Delivery failures require checking recipient responses and domain authentication separately. Personal Gmail is not a substitute for a newsletter system with consent, unsubscribe handling, and delivery monitoring. See the [website email guide](/maintaining/email).
+
+## Official references
+
+- [Google’s Send as notice and instructions](https://support.google.com/mail/answer/22370)
+- [Gmail SMTP protocol documentation](https://developers.google.com/workspace/gmail/imap/imap-smtp)
+- [App password eligibility and guidance](https://support.google.com/accounts/answer/185833)
+
+Reviewed 6 November 2026. This is a technical guide, not a claim that AVRXT currently uses Gmail SMTP for its website mail.

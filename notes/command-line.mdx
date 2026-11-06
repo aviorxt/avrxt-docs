@@ -1,0 +1,46 @@
+---
+title: "Small command-line recipes for developers"
+sidebarTitle: "Search and JSON recipes"
+description: "Use ripgrep to explore source files and jq to inspect saved JSON, with read-only examples and clear assumptions."
+---
+
+The most useful command is often a small read-only query that answers one question. These examples assume ripgrep and jq are installed from their official releases or a trusted package manager. Run them from a disposable example project first. They do not install software or change files.
+
+## Find a reference in source
+
+```sh
+rg -n 'old.example.com' src
+```
+
+This searches the `src` directory and prints matching line numbers. Quote the pattern so the shell does not interpret it. ripgrep patterns are regular expressions by default: use `-F` for a literal string when punctuation should have no special meaning.
+
+```sh
+rg -n -F 'old.example.com' src
+rg --files -g '*.mdx'
+```
+
+The second command lists matching documentation filenames. Searches normally honor ignore rules; an absent result does not prove a reference is absent from ignored or hidden files. Broaden scope deliberately rather than scanning an entire home directory and exposing unrelated data.
+
+## Inspect a saved JSON response
+
+Create an example `response.json` containing non-sensitive data:
+
+```json
+{"items":[{"name":"example","enabled":true}]}
+```
+
+Then inspect its shape and select the field you need:
+
+```sh
+jq 'keys' response.json
+jq '.items[] | .name' response.json
+jq -r '.items[] | select(.enabled == true) | .name' response.json
+```
+
+The raw-output option removes JSON string quoting from selected strings. These expressions assume an items array with the shown fields. Real responses may contain nulls, pagination, or a different error shape. Read the original response before adapting a filter.
+
+## Keep the workflow inspectable
+
+Avoid immediately piping an unknown remote response into another program. Save a sanitized example, inspect its content type and structure, then build the query incrementally. Check command failures instead of treating empty output as success. Shell quoting differs between environments, especially Windows command prompt and Unix shells.
+
+Use the [ripgrep repository](https://github.com/BurntSushi/ripgrep) and [jq repository](https://github.com/jqlang/jq) for current installation and syntax references. Continue with [API debugging](/notes/api-debugging) when the response itself is unexpected.

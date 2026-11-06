@@ -1,0 +1,44 @@
+---
+title: "Accessible interfaces for a personal website"
+sidebarTitle: "Accessibility practice"
+description: "Practical checks for keyboard navigation, form labels, focus, contrast, motion preferences, and readable content."
+---
+
+Accessibility belongs in the ordinary interaction, not a separate mode that visitors must discover. This guide is a practical review workflow, not a claim that the website has received a complete accessibility audit or certification.
+
+## Start with native controls
+
+Use links for navigation and buttons for actions. Give inputs persistent labels rather than relying on placeholder text. Keep headings in a meaningful order and use landmarks so a reader can identify navigation and main content. Native elements provide useful behavior that a clickable generic container would need to recreate.
+
+```html
+<form>
+  <label for="email">Email address</label>
+  <input id="email" name="email" type="email"
+         autocomplete="email" required aria-describedby="email-help">
+  <p id="email-help">Confirm your address before receiving updates.</p>
+  <button type="submit">Request confirmation</button>
+</form>
+```
+
+This is a markup example; it does not send or store email. A real form also needs server validation, understandable errors, consent handling where appropriate, and an announced result. Avoid replacing a specific server error with a vague success message.
+
+## Test without a mouse
+
+Use Tab and Shift+Tab through the page. Confirm that focus is visible, the sequence follows the reading order, and controls can be activated with the expected keys. Open and close the mobile menu, dismiss dialogs, and make sure focus does not disappear behind overlays. A decorative pointer effect must not replace the usable focus indicator.
+
+## Respect motion and contrast
+
+```css
+.decorative-bloom { animation: drift 12s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .decorative-bloom { animation: none; transform: none; }
+}
+```
+
+Use this on the decoration itself; do not disable essential state feedback indiscriminately. Provide a pause option for ongoing nonessential motion. Check text and interactive-state contrast using measured colors, including muted labels and outlined text. Color alone should not communicate success or failure.
+
+## Review on a narrow screen
+
+Increase text size, inspect long labels, and check whether content reflows. Keep tables and code locally scrollable where needed. Make the form usable when an error message adds height. Check meaningful image alternatives and mark purely decorative imagery appropriately.
+
+Automated checks can find some issues, but they do not replace keyboard and assistive-technology review. Follow the [W3C forms tutorial](https://www.w3.org/WAI/tutorials/forms/) and [MDN reduced-motion reference](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion). Continue with the [performance lab](/notes/performance-lab) for motion cost.

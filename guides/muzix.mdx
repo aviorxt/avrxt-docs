@@ -1,0 +1,26 @@
+---
+sidebarTitle: "Muzix"
+title: "Music, as a live signal."
+description: "Current activity, listening history, artwork, and monthly snapshots."
+---
+
+[Muzix](https://muzix.avrxt.dev) brings listening activity into one focused space.
+
+## Listening data
+
+The shared backend uses **Last.fm listening data**. A currently-playing track is only available when the scrobbling source reports it. Otherwise the interface can display the most recent known track and its available history.
+
+<Note>Now playing depends on the connected player and scrobbling source. It is not a guarantee of continuous, second-by-second playback telemetry.</Note>
+
+## Artwork
+
+Track and artist artwork use the available music metadata and fallback providers. A missing image should not prevent the listening information from loading.
+
+## Monthly snapshot
+
+Muzix has its own email subscription flow. Readers confirm their address before receiving the monthly listening snapshot. Each message includes an unsubscribe option.
+
+<CardGroup cols={2}>
+  <Card title="Open Muzix" icon="music" href="https://muzix.avrxt.dev">See the current listening dashboard.</Card>
+  <Card title="Read the listening endpoint" icon="code" href="/api-reference/now-playing">Understand the compatibility endpoint.</Card>
+</CardGroup>

@@ -1,0 +1,41 @@
+---
+title: "Maintaining these docs"
+description: "Write source-backed MDX, validate links and API references, and publish through the separate documentation repository."
+---
+
+Documentation belongs in this separate Mintlify repository. The main website no longer has a docs editor after the migration.
+
+## Preview locally
+
+```bash
+npm ci
+npm run dev
+```
+
+The preview uses port 3003. Brand and navigation settings are in `docs.json`, custom visuals in `style.css`, and content in MDX. The CLI is pinned in the lockfile.
+
+## Page standard
+
+Each page needs a unique title and description, an accurate opening summary, useful task-oriented sections, relevant examples, clear limitations, and related links. Add troubleshooting where it helps. Write enough to answer the question; do not pad content for a word count.
+
+For API pages, distinguish supported inputs, response semantics, freshness, errors, and access requirements. For tools, explain what a result does **not** establish, such as an MX record not proving mailbox existence.
+
+## Validation
+
+```bash
+npm run check
+npm run links
+```
+
+Review an ordinary guide, a field note, an endpoint, and the landing page at desktop and phone widths. Check long tables, code overflow, keyboard access, and reduced motion. Local search may require Mintlify authentication; do not create credentials just to enable a preview without approval.
+
+## Preserved articles
+
+The two original CMS articles are in `notes/`, with original source in `migration/source-articles.json`. Historical third-party service claims must remain attributed rather than becoming current promises by AVRXT.
+
+## Related reading
+
+- [Release checklist](/maintaining/releases)
+- [Search and SEO](/maintaining/search-seo)
+- [Security](/maintaining/security)
+

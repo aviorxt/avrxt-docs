@@ -1,0 +1,28 @@
+---
+title: "When something does not work"
+description: "Diagnose docs domains, legacy links, music freshness, artwork, email, login, origins, and animation performance."
+---
+
+Start with the failing hostname and the smallest reproducible symptom. Avoid broad resets, repeated sends, or relaxed security settings.
+
+<AccordionGroup>
+<Accordion title="The custom docs domain does not load">Check the Mintlify deployment, exact configured domain, DNS target, and TLS provisioning. Do not release main-site redirects before the docs domain works. Use Mintlify’s current proxy/domain instructions.</Accordion>
+<Accordion title="An old article link breaks">Check its explicit redirect mapping and the destination navigation entry. Keep the original source article and database record while fixing the route.</Accordion>
+<Accordion title="Listening activity is old or empty">Check Last.fm scrobbling and the response’s `stale`, `checkedAt`, and `nowPlaying` fields. Distinguish no active track, missing configuration, and upstream failure. Do not present old data as live.</Accordion>
+<Accordion title="Artwork is missing">Check the exact names and returned source. Catalogue limits, absent metadata, or provider failures can prevent a trusted match. A neutral image is better than the wrong artist.</Accordion>
+<Accordion title="An email did not arrive">Check confirmation state, sender verification, suppression state, provider events, and spam filtering. Welcome-delivery failure is different from failed subscription. Do not resend a broadcast to everyone as a test.</Accordion>
+<Accordion title="Owner login is denied">Check expiry, callback origin, current membership/role, provider availability, and server configuration. Never bypass authorization or share a session URL.</Accordion>
+<Accordion title="curl works but a browser request fails">Inspect Origin policy and the status response. Same-origin mutations and public reads have different boundaries. Do not allow arbitrary origins.</Accordion>
+<Accordion title="Motion feels slow">Check mobile mode, reduced-motion settings, off-screen pausing, active click bursts, and costly SVG filters. Avoid per-petal animation loops or decorative effects that interfere with normal scrolling.</Accordion>
+</AccordionGroup>
+
+## What to include in a report
+
+Provide a public URL, time, browser/device, HTTP status where available, and sanitized steps. Exclude credentials, subscriber data, private object URLs, and confirmation tokens.
+
+## Related reading
+
+- [Status](/guides/status)
+- [Security](/maintaining/security)
+- [Release checklist](/maintaining/releases)
+

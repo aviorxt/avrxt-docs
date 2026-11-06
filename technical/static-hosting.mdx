@@ -1,0 +1,29 @@
+---
+title: "Host a small personal website"
+sidebarTitle: "Static hosting guide"
+description: "Prepare a reproducible static build, preview it, connect a domain, and keep a reliable rollback path."
+---
+
+A static website consists of generated HTML, CSS, JavaScript, and assets. It can have browser interactions without an application server. Server actions, private database queries, and backend routes need a compatible runtime or a separate backend. Uploading framework source does not automatically provide that runtime.
+
+## Prepare the build
+
+Keep source in version control and dependencies in a lockfile. Document the supported Node version, run the production build locally, and identify the output directory from the framework configuration. Do not guess between `dist`, `out`, and `build`. Check that generated output contains no private environment files or credentials.
+
+## Verify a preview
+
+Choose hosting that supports your output and configure its build command and publish directory. Inspect the preview URL before changing your domain. Test the homepage, a direct nested-page visit, a missing page, mobile navigation, asset URLs, and external links. Configure client-routing fallbacks deliberately rather than returning successful HTML for every missing asset.
+
+## Add a custom domain
+
+Add the hostname in the hosting dashboard before changing DNS. Apply the provider’s records and wait for verification and HTTPS provisioning. Choose one canonical hostname and redirect the alternative where supported. Preserve unrelated records, especially MX and mail authentication. Domain ownership is a separate cost from hosting.
+
+## Release and rollback
+
+Keep the previous working deployment and its source revision. After release, test production again, including forms that call another origin. Roll back through the hosting release history or the recorded DNS configuration as appropriate. Cached DNS means not every visitor sees a change immediately.
+
+## Search visibility
+
+Write descriptive titles, use accessible headings, publish a sitemap with canonical URLs, and keep preview hosts out of search indexes. Useful original material matters more than repeating keywords. Neither a hosting choice nor metadata can guarantee first place in search results.
+
+Use the official [GitHub Pages guide](https://pages.github.com/) or [Cloudflare Pages documentation](https://developers.cloudflare.com/pages/) for provider-specific commands. See the [free-service shortlist](/technical/free-services) for tradeoffs and [AVRXT deployment notes](/maintaining/deployment) for this website’s separate implementation.

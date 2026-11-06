@@ -1,0 +1,41 @@
+---
+title: "Deploying the website deliberately"
+description: "Validate repositories and hosting results, preserve shared API consumers, and cut documentation over safely."
+---
+
+Treat each hostname as a separate deployment boundary. A successful push is not proof that its hosting deployment completed.
+
+## Main website checks
+
+The existing workflow installs dependencies, runs tests and lint, builds Next.js, audits production dependencies, and dry-runs three Workers.
+
+```bash
+npx wrangler deploy --dry-run --config api-worker/wrangler.jsonc
+npx wrangler deploy --dry-run --config unsubscribe-worker/wrangler.jsonc
+npx wrangler deploy --dry-run --config cloudflare/edge-api/wrangler.jsonc
+```
+
+## Shared gateway changes
+
+The Worker composes the retained gateway, Last.fm adapter, newsletter handlers, and explicit cache policy. Preserve existing bindings and secrets. Check all dependent frontends before changing response shapes, endpoints, or freshness.
+
+## Profile and Muzix
+
+These frontends are separately hosted. Inspect their own repository run and hosting deployment, then verify their actual hostnames. Do not infer their release status from the main website’s build.
+
+## Documentation cutover order
+
+1. Review and approve the standalone docs source.
+2. Connect the intended Git repository to the existing Mintlify project.
+3. Configure the custom domain with the target supplied by Mintlify.
+4. Verify HTTPS, navigation, content, images, and redirects on that domain.
+5. Release main-site route removals and redirects only afterwards.
+
+Keep the original CMS records and CDN files for rollback. Connecting a Git provider, expanding access, or changing live DNS requires the owner’s authorization.
+
+## Related reading
+
+- [Release checklist](/maintaining/releases)
+- [Documentation workflow](/maintaining/documentation)
+- [Troubleshooting](/maintaining/troubleshooting)
+

@@ -1,0 +1,14 @@
+{
+  "name": "avrxt-docs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "mint dev --port 3003",
+    "check": "mint validate",
+    "links": "mint broken-links",
+    "test": "node --test assets/starters/developer-recipes/recipes.test.mjs"
+  },
+  "devDependencies": {
+    "mint": "4.2.1207"
+  }
+}

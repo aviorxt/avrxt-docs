@@ -1,0 +1,35 @@
+---
+title: "Email and the monthly music snapshot"
+description: "Confirmation, separate mailing lists, monthly snapshot scheduling, delivery checks, and honest playtime coverage."
+---
+
+The main website and Muzix have separate email flows. Do not assume joining one subscribes a reader to the other.
+
+## Main-site updates
+
+Signup sends a confirmation link. Confirmation consumes its token atomically before scheduling the welcome message. A welcome-provider outage does not roll back a confirmed subscription. Unsubscribe links read state on GET and require explicit POST confirmation to change preferences.
+
+## Muzix automation
+
+The Muzix repository schedules its monthly GitHub workflow at **03:00 UTC on the first day of the month**, or **08:30 India Standard Time**. Normal issues cover the previous completed calendar month in Asia/Kolkata.
+
+Manual runs support controlled previews and explicitly requested issues. Delivering a real issue is an email send to actual subscribers: inspect the month, audience, preview, and content before approving it.
+
+## Snapshot content and accuracy
+
+The extended email includes cover images, on-loop selection, top artists, tracks, albums, activity rhythm, and known-duration playtime. Playtime is a full-track estimate from verified durations, not measured listening time. Unknown durations are excluded and coverage is disclosed.
+
+## Template requirements
+
+Use readable fallback fonts, source attribution, a working unsubscribe option, and **with 🩶 @avrxt**. Logos must be public assets; recipient-specific private links must not enter shared previews.
+
+## Delivery troubleshooting
+
+A green workflow does not prove inbox delivery to every recipient. Check provider events, bounces, complaints, suppression state, and the workflow artifact. Do not resend a whole audience to diagnose one uncertain delivery.
+
+## Related reading
+
+- [Newsletter guide](/guides/newsletter)
+- [Form boundaries](/api-reference/forms)
+- [Release checklist](/maintaining/releases)
+

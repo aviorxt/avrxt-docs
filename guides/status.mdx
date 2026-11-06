@@ -1,0 +1,29 @@
+---
+title: "Understanding website status"
+description: "Read AVRXT service availability, public incidents, maintenance, and gaps in monitoring history."
+---
+
+Open [avrxt.dev/status](https://www.avrxt.dev/status) for the website’s public status view. The independent [hosted status page](https://status.avrxt.dev) is a fallback when the website itself is unavailable.
+
+## What is reported
+
+The website reads public Better Stack feeds and displays whitelisted resources, reports, and updates. A source failure is shown as **unknown** rather than healthy. Internal incident notes are not part of the public feed.
+
+## Freshness
+
+The browser updates approximately every five minutes while visible and when returning to the tab. Public server reads use a short cache. This is not a second-by-second monitoring console.
+
+## Reading history correctly
+
+A history gap means monitoring data is absent. Manually reported entries are distinct from measured uptime. Neither should be turned into an invented uptime percentage.
+
+## Reporting a problem
+
+Include a public URL, approximate time, browser, and a short reproduction. Distinguish the main website, profile, docs, and Muzix hostnames; they may be deployed separately. Do not include monitoring bearer tokens or internal provider records.
+
+## Related reading
+
+- [Status API](/api-reference/status)
+- [Troubleshooting](/maintaining/troubleshooting)
+- [Deployment boundaries](/maintaining/deployment)
+

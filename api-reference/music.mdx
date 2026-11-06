@@ -1,0 +1,37 @@
+---
+title: "Canonical listening data"
+description: "Read Last.fm now-playing, recent tracks, chart freshness, and calendar-month summaries."
+---
+
+The canonical routes are `GET /v1/music/now-playing` and `GET /v1/music/chart` on `https://api.avrxt.dev`.
+
+## Read current activity
+
+```bash
+curl --fail-with-body https://api.avrxt.dev/v1/music/now-playing
+```
+
+The response contains `source`, `username`, `profileUrl`, `checkedAt`, `stale`, `nowPlaying`, and `recentTracks`.
+
+Normalized tracks contain `id`, `title`, `artist`, `album`, `image`, `url`, `plays`, and `playedAt`. Missing images are empty strings. An active item may not have a completed-play timestamp.
+
+`nowPlaying` is null when no active track is reported or the data is stale. Do not label the last known track as live.
+
+## Read charts
+
+The chart response adds `chartPeriod`, `chartsUpdatedAt`, `chartsStale`, `totalScrobbles`, `topArtists`, `topTracks`, `topAlbums`, and `capsule`.
+
+The top lists are labeled **Last 30 days**. The capsule represents the current **calendar month in Asia/Kolkata**, so totals can differ. Capsule completeness is explicit: bounded pagination and request deadlines may make coverage partial.
+
+## Freshness and failure
+
+Recent activity is internally cached for 20 seconds. Charts and month summaries use 15 minutes. The outer Worker cache is bypassed. An upstream failure may return a labeled stale result or a 502; missing configuration returns 503.
+
+The older `/v1/spotify/now-playing` endpoint is retained for compatibility. Its path name does not imply that the current Last.fm feed needs Spotify Premium.
+
+## Related reading
+
+- [Muzix guide](/guides/muzix)
+- [Artwork lookups](/api-reference/artwork)
+- [Cache policy](/maintaining/caching)
+

@@ -1,0 +1,43 @@
+---
+title: "A clear interface to the website."
+description: "Use the shared AVRXT gateway over HTTPS and JSON."
+---
+
+The public gateway base URL is:
+
+```text
+https://api.avrxt.dev/v1
+```
+
+## Your first request
+
+<CodeGroup>
+```bash curl
+curl --fail-with-body https://api.avrxt.dev/v1/health
+```
+```javascript JavaScript
+const response = await fetch("https://api.avrxt.dev/v1/health");
+if (!response.ok) throw new Error(`HTTP ${response.status}`);
+const health = await response.json();
+console.log(health);
+```
+```python Python
+import json
+from urllib.request import urlopen
+
+with urlopen("https://api.avrxt.dev/v1/health", timeout=10) as response:
+    print(json.load(response))
+```
+</CodeGroup>
+
+## Access and boundaries
+
+Read-only public endpoints do not require an administrator session. Browser-origin restrictions, rate limits, and endpoint-specific validation still apply. Administrative and write endpoints are not a general-purpose public integration API.
+
+## Machine-readable reference
+
+The [OpenAPI document](/openapi.json) is a migration-time snapshot of the public schema. The main website also serves its [current OpenAPI document](https://www.avrxt.dev/openapi.json).
+
+The listening endpoint retains a Spotify-compatible path for existing clients even though the backend now uses Last.fm data.
+
+<Note>The interactive playground is disabled to avoid accidental writes or reliance on browser-origin permissions. Use a terminal for the read-only examples.</Note>

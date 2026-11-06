@@ -1,0 +1,29 @@
+---
+title: "See the key events your browser receives"
+sidebarTitle: "Keyboard tester"
+description: "Test physical key positions, modifiers, and repeat events in a focused keyboard display with adjustable visual feedback."
+---
+
+The keyboard tester highlights key events while its test area has focus. Use it to inspect browser input, compare physical positions, or check whether a modifier reaches the page.
+
+<Card title="Open Keyboard tester" href="https://www.avrxt.dev/tools/keytest">Try the interactive keyboard display.</Card>
+
+## Start a session
+
+Choose Start or Refocus and click inside the test area. Press ordinary test keys and observe the highlighted positions, event history, and counters. Try the available response and lighting controls, then Reset for a fresh session. On narrow screens, scroll the keyboard horizontally to inspect the full layout.
+
+## Read the display
+
+The tester uses physical event codes. A position label can differ from the character produced by a language layout or remapping. Pressed highlights clear when focus is lost; this prevents a key from appearing stuck after you leave the test area.
+
+## Browser and hardware limits
+
+Operating-system shortcuts, browser shortcuts, and many Fn combinations may never reach the page. A missing event does not by itself prove a broken switch. This browser test cannot certify hardware rollover, inspect keyboard firmware, or change a physical keyboard’s RGB lighting. Its lighting controls affect the on-screen visualization.
+
+## Privacy and troubleshooting
+
+The component processes events in the focused page and keeps its test state in the browser. It is not a background keyboard recorder. Use ordinary sample input rather than passwords or other secrets. If nothing highlights, refocus first. If a particular combination is missing, check whether the operating system or browser reserves it before investigating hardware.
+
+## Related reading
+
+Explore the [complete toolbox](/guides/tools), read the [interaction guide](/guides/interactions), or [report a problem](/guides/contact) with your browser, keyboard layout, and the non-sensitive combination you tested.

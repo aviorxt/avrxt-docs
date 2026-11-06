@@ -1,0 +1,29 @@
+---
+title: "Debugging notebook: failed workflows and stale data"
+sidebarTitle: "Workflow and cache debugging"
+description: "Diagnose a failed GitHub workflow or stale API response without hiding failures or repeatedly triggering side effects."
+---
+
+A failed workflow and a stale response can look similar from the browser: the expected update is missing. They need different evidence. Start by identifying whether the change was built, deployed, and requested from the intended environment.
+
+## Find the first useful failure
+
+Open the relevant GitHub Actions run and inspect the failing job and step. Record the source revision, runtime version, command, and first meaningful error. A final nonzero exit status describes the outcome; the earlier message usually explains the cause. Compare the local lockfile and runtime with CI before changing application logic.
+
+If a job needs a secret, verify that the expected environment provides it without printing the value. A forked pull request may have different access from a trusted branch. Do not solve a missing credential by exposing it in workflow YAML or granting every job broad write access.
+
+## Distinguish checks from actions
+
+A validation job can usually be rerun safely. A newsletter job may send real email. Before retrying a side-effecting step, determine whether the provider accepted the first attempt and whether an idempotency key protects the operation. An ambiguous timeout is not proof that no message was sent.
+
+## Trace stale data through its layers
+
+Inspect the requested hostname, status, cache headers, payload timestamp, and any stale indicator. Compare browser, gateway, application, and upstream caching separately. The AVRXT Worker uses a public allowlist and separate internal music caches; removing one outer cache does not force the upstream source to report a new track.
+
+Use a controlled test case instead of adding random cache-busting parameters to every production request. For private routes, check that authorization and cookies bypass public caching. A response should not become cacheable simply because its JSON resembles a public response.
+
+## Close the investigation
+
+After a fix, verify the intended revision is deployed and test one complete consumer flow. Keep the observed error, actual cause, change, and evidence in a release note. Do not describe a guessed cause as a confirmed incident finding.
+
+References: [GitHub workflow logs](https://docs.github.com/en/actions/how-tos/monitor-workflows/use-workflow-run-logs), [AVRXT cache policy](/maintaining/caching), [release practice](/maintaining/releases), and [bug-report template](/notes/bug-reports).

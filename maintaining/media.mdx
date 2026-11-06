@@ -1,0 +1,33 @@
+---
+title: "Public media and private storage"
+description: "R2/CDN assets, S3-backed personal storage, source attribution, and documentation asset independence."
+---
+
+Public images and private objects have different access requirements. A public CDN must not become a shortcut around personal-storage authorization.
+
+## Public uploads
+
+The profile’s public media can be delivered through R2/CDN settings. Uploads use short-lived, server-authorized URLs and object-metadata verification. Personal filenames are rewritten. Validate trusted origins and content before saving a public reference.
+
+## Private objects
+
+The owner’s storage area uses S3-backed server operations. Presigned URLs expire and must not be copied into documentation, public issues, or logs. Browser users do not receive AWS credentials.
+
+## Music artwork
+
+Artwork is sourced from Last.fm, verified Apple catalogue matches, and exact-name Deezer artist lookups. Keep source attribution. An empty trusted lookup should produce a neutral placeholder rather than a wrong portrait or guessed album cover.
+
+## Documentation assets
+
+Brand images are copied into this repository’s `assets/` directory so the docs logo does not depend on the main website responding. The old article records and CDN files remain available for rollback after the CMS migration.
+
+## Troubleshooting uploads
+
+Distinguish URL expiry, upload transport failure, metadata mismatch, and final save failure. Do not blindly repeat successful uploads when only verification failed; follow the existing recovery flow.
+
+## Related reading
+
+- [Artwork API](/api-reference/artwork)
+- [Configuration](/maintaining/configuration)
+- [Security](/maintaining/security)
+

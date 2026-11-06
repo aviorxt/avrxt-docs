@@ -1,0 +1,34 @@
+---
+title: "Check an authorized public TCP port"
+sidebarTitle: "Port checker"
+description: "Test one public host and TCP port, then understand open, refused, and timed-out connections."
+---
+
+Test one public host and TCP port, then understand open, refused, and timed-out connections. This guide explains the utility on avrxt’s personal website and helps you interpret its result without drawing conclusions the check cannot support.
+
+<Card title="Open Port checker" href="https://www.avrxt.dev/tools/portcheck" icon="arrow-up-right-from-square">Use the live tool.</Card>
+
+## Get started
+
+Enter a public hostname or IP address you are authorized to test. Select one TCP port between 1 and 65535, acknowledge authorization, and submit the check. Compare the outcome with your firewall and service configuration.
+
+## Understand the result
+
+Open means the server established a TCP connection at that moment. Closed or filtered can indicate refusal, a firewall, routing trouble, or timeout. The connection timeout is approximately 3.5 seconds. Latency measures the attempt, not application performance.
+
+## Limitations and troubleshooting
+
+Private, local, and reserved destinations are rejected, including hostnames with mixed public and blocked answers. This is not a port-range scanner or UDP test. If a local service is unreachable, check its listening interface, inbound firewall, public DNS, and port forwarding. An open connection does not validate TLS or login.
+
+## Use it responsibly
+
+Only test systems you own or have permission to inspect. Submit the minimum information needed and avoid credentials, private tokens, and unrelated personal data. Network observations depend on the service’s vantage point and can change over time. Repeated requests may be rate limited; wait before retrying rather than repeatedly submitting a failing query.
+
+## Report a problem
+
+Include the tool name, approximate time, browser, expected result, and a redacted example in a [contact message](/guides/contact). Do not send passwords or private network details. Check the [status guide](/guides/status) when multiple tools appear unavailable.
+
+<CardGroup cols={2}>
+<Card title="All tools" href="/guides/tools">Find the utility that fits your task.</Card>
+<Card title="Privacy and data" href="/guides/data-requests">Understand privacy information and request options.</Card>
+</CardGroup>

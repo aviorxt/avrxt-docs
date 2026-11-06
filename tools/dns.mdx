@@ -1,0 +1,34 @@
+---
+title: "Inspect DNS and domain registration"
+sidebarTitle: "DNS + RDAP"
+description: "Read public DNS answers and optional RDAP records with clear explanations of caching and registration limits."
+---
+
+Read public DNS answers and optional RDAP records with clear explanations of caching and registration limits. This guide explains the utility on avrxt’s personal website and helps you interpret its result without drawing conclusions the check cannot support.
+
+<Card title="Open DNS + RDAP" href="https://www.avrxt.dev/tools/dns" icon="arrow-up-right-from-square">Use the live tool.</Card>
+
+## Get started
+
+Enter a domain and choose the needed record type. Inspect the answer, response status, and TTL. Enable the optional RDAP lookup when you need the registration details published by the registry.
+
+## Understand the result
+
+DNS answers use Cloudflare DNS over HTTPS. Supported types include A, AAAA, CNAME, MX, NS, TXT, CAA, and additional advanced types offered in the interface. TTL is a caching duration, not a countdown until every resolver updates.
+
+## Limitations and troubleshooting
+
+RDAP requests go through rdap.org to the relevant registry. Registration details can be redacted or absent. A record does not prove ownership or website safety. If there is no answer, check the record type and authoritative nameservers. Try the registered domain rather than a subdomain for RDAP.
+
+## Use it responsibly
+
+Only test systems you own or have permission to inspect. Submit the minimum information needed and avoid credentials, private tokens, and unrelated personal data. Network observations depend on the service’s vantage point and can change over time. Repeated requests may be rate limited; wait before retrying rather than repeatedly submitting a failing query.
+
+## Report a problem
+
+Include the tool name, approximate time, browser, expected result, and a redacted example in a [contact message](/guides/contact). Do not send passwords or private network details. Check the [status guide](/guides/status) when multiple tools appear unavailable.
+
+<CardGroup cols={2}>
+<Card title="All tools" href="/guides/tools">Find the utility that fits your task.</Card>
+<Card title="Privacy and data" href="/guides/data-requests">Understand privacy information and request options.</Card>
+</CardGroup>

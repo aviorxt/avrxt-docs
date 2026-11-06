@@ -1,0 +1,38 @@
+---
+title: "Motion and interactive artwork"
+description: "Desktop mouse controls, mobile motion, reduced-motion support, and the floral AVRXT illustration."
+---
+
+The homepage’s floral artwork is a decorative illustration of the AVRXT name. Desktop controls stay inside the illustration and do not move the page content.
+
+## Mouse and keyboard controls
+
+| Interaction | Result |
+| --- | --- |
+| Move the mouse over the artwork | Gentle tilt and foreground/background depth |
+| Drag with the left mouse button | Pan within bounded limits |
+| Click, then scroll over focused artwork | Zoom between 80% and 165% |
+| Click without dragging | A colorful petal, sparkle, and ring burst |
+| Double-click | Reset the view |
+| Zoom buttons | Change magnification without a wheel |
+| Arrow keys while focused | Pan the illustration |
+| `+`, `-`, `0`, or `Home` | Zoom or reset |
+| `Escape` | Release artwork focus |
+
+## Motion preferences
+
+The pause control stops animation. Browser or operating-system reduced-motion settings suppress decorative animation and click bursts. Effects also pause when the artwork leaves the viewport or the tab is hidden.
+
+## Mobile behavior
+
+The narrow layout keeps a smaller animation set. Desktop mouse controls, extra trails, floating particles, and individual-letter choreography are not enabled there. Touch scrolling remains available.
+
+## Performance limits
+
+Click bursts remove themselves and only three can be active at once. The illustration uses inline SVG and CSS instead of a video download or third-party animation runtime. Petal layers are animated as groups rather than hundreds of separate loops.
+
+## Related reading
+
+- [Website overview](/website-overview)
+- [Troubleshooting motion](/maintaining/troubleshooting)
+

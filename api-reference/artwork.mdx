@@ -1,0 +1,38 @@
+---
+title: "Track and artist artwork"
+description: "Lookup parameters, source attribution, verified matches, and neutral image fallbacks."
+---
+
+## Track or album art
+
+```text
+GET /v1/music/artwork?artist=...&track=...
+GET /v1/music/artwork?artist=...&album=...&type=album
+```
+
+Provide `artist` and a track or album name. Artist names are bounded to 200 characters and track/album names to 300. Invalid queries return 400.
+
+The lookup first checks Last.fm detail metadata, then a verified Apple catalogue match. A successful JSON response contains `image`, `source`, and `sourceUrl`. `clientLookup` may be true when a client-side catalogue fallback is appropriate. An empty image with a null source means no trusted match was found.
+
+## Artist portraits
+
+```text
+GET /v1/music/artist-image?artist=...
+```
+
+The adapter uses exact normalized-name matches from Deezer, validates the portrait host and source link, and avoids choosing an artist merely because the name is similar.
+
+## Rendering and attribution
+
+Use a neutral fallback when an image is empty or invalid. Preserve provider attribution and do not claim ownership of provider artwork. Lookup results can be cached internally for 24 hours; outer responses remain no-store.
+
+## Troubleshooting
+
+Check the exact artist/track names and response source before assuming an image bug. Catalogue limits, missing metadata, and unavailable upstream services can all prevent a trusted match.
+
+## Related reading
+
+- [Listening data](/api-reference/music)
+- [Muzix](/guides/muzix)
+- [Public and private media](/maintaining/media)
+

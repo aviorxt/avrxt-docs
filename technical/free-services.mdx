@@ -1,0 +1,38 @@
+---
+title: "Free services for a personal website"
+sidebarTitle: "Free-service shortlist"
+description: "Evaluate hosting, API, database, and email free tiers without overlooking limits, billing, or a migration path."
+---
+
+A personal website can start with static hosting and a domain. Add a server, database, or email provider when a feature requires one. Each extra service introduces another account, limit, outage mode, and export format. This shortlist is for evaluation; it is not a statement that every AVRXT deployment uses these plans.
+
+## Services to evaluate
+
+| Service | Useful starting point | Check first |
+| --- | --- | --- |
+| GitHub Pages | Static portfolio and project notes | Repository visibility, usage policy, build limits; no application server |
+| Cloudflare Pages | Static builds with previews | File and build limits, framework support, separate function usage |
+| Cloudflare Workers | Small API handlers | CPU and request limits, storage billing, runtime compatibility |
+| Supabase Free | A small Postgres-backed project | Storage, egress, inactivity pausing, project limits, backup needs |
+| Cloudflare routing | Incoming domain aliases | Destination verification, separate outbound sending |
+| Resend | Evaluate website email delivery | Transactional versus marketing plans, quotas, verified-domain limits |
+
+## Free is a budget
+
+A free plan can fit an experiment while being unsuitable for a critical inbox or an always-available feature. A domain, maintenance time, and optional paid services remain separate costs. Understand whether usage stops at a cap or can generate charges after a plan change. Do not assume that an account without a current invoice has unlimited capacity.
+
+## Evaluate before connecting
+
+Create a separate project, protect the account, and store API credentials as server-side secrets. Check alerts and spending controls where available. Test an entire flow, including a provider failure. Export important data and record how to move it elsewhere. A service is easier to replace when its data format and responsibilities are clear.
+
+## Current sources
+
+Reviewed 6 November 2026. Offers change; use these official pages for current quotas and eligibility rather than treating copied limits as permanent promises.
+
+- [GitHub Pages](https://pages.github.com/)
+- [Cloudflare Pages limits](https://developers.cloudflare.com/pages/platform/limits/)
+- [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/)
+- [Supabase pricing](https://supabase.com/pricing)
+- [Resend pricing](https://resend.com/pricing)
+
+Next: [host a static website](/technical/static-hosting) or [set up domain email routing](/technical/email-routing).

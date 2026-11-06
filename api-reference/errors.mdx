@@ -1,0 +1,22 @@
+---
+title: "Failures should be predictable."
+description: "Handling HTTP errors, upstream failures, and retries."
+---
+
+Check the HTTP status before interpreting a response body. Endpoint-specific error payloads may differ.
+
+| Status | Typical interpretation |
+| --- | --- |
+| 400 | Invalid input or a missing required parameter |
+| 401 / 403 | Authentication, authorization, or origin policy rejected the request |
+| 404 | The requested resource or endpoint is unavailable |
+| 429 | A rate limit was reached |
+| 502 / 503 | An upstream dependency or service is unavailable |
+
+## Retry carefully
+
+Retry read-only requests with a bounded delay. Respect `Retry-After` when supplied. Avoid automatic retries of form submissions unless the endpoint explicitly supports idempotency.
+
+## Report a problem
+
+Include the endpoint, HTTP status, approximate request time, and a sanitized reproduction. Exclude credentials, private URLs, email addresses, and personal response data. Check [service status](https://www.avrxt.dev/status) first.

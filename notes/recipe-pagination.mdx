@@ -1,0 +1,40 @@
+---
+title: "Recipe: paginate a small in-memory list"
+sidebarTitle: "Pagination recipe"
+description: "Validate pagination inputs, return useful metadata, and know when to switch from a small array example to database cursors."
+---
+
+This dependency-free JavaScript example paginates an already loaded array. It is useful for learning the response contract or displaying a small local collection. It is not an efficient way to paginate a large database: do not load an entire table just to slice it.
+
+## A bounded function
+
+```javascript
+export function paginate(items, page = 1, pageSize = 20) {
+  if (!Array.isArray(items)) throw new TypeError('Expected an array');
+  if (!Number.isSafeInteger(page) || page < 1 ||
+      !Number.isSafeInteger(pageSize) || pageSize < 1 || pageSize > 100) {
+    throw new RangeError('Invalid pagination');
+  }
+  const total = items.length;
+  const pages = Math.ceil(total / pageSize);
+  const start = (page - 1) * pageSize;
+  const data = page > pages ? [] : items.slice(start, start + pageSize);
+  return { data, page, pageSize, total, hasNext: page < pages };
+}
+```
+
+The page size is capped and invalid numbers fail explicitly. Empty lists return empty data and no next page. A page beyond the end also returns empty data. Decide whether that behavior suits your interface and document it.
+
+## Parse at the boundary
+
+HTTP query parameters arrive as strings. Validate an entire numeric value instead of using a parser that silently accepts trailing text. Translate invalid input into a clear client error; do not expose an internal stack trace. Keep a stable sort order before paginating so repeated reads have a predictable meaning.
+
+## When the data grows
+
+For a database, apply filtering, authorization, ordering, and limits inside the query. Offset pagination is easy to understand but can become expensive or unstable as records change. Cursor pagination can help, provided the cursor represents a stable ordering with a tie-breaker. It does not eliminate authorization checks or guarantee a snapshot of changing data.
+
+## Verify behavior
+
+Try an empty array, an exact page boundary, the final partial page, an excessive page number, and invalid sizes. Check that a request cannot ask for unlimited rows. The [downloadable recipe module](/assets/starters/developer-recipes.zip) includes this function and runnable Node tests.
+
+Continue with [API debugging](/notes/api-debugging) and the [starter collection](/notes/starters).

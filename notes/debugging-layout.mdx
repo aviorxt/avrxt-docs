@@ -1,0 +1,27 @@
+---
+title: "Debugging notebook: gaps, overflow, and animation"
+sidebarTitle: "Layout and motion debugging"
+description: "A reproducible investigation method for the mobile gaps, desktop alignment, and motion concerns encountered during the AVRXT redesign."
+---
+
+The redesign surfaced visible problems: a newsletter section detached from the main content on desktop, excessive space near the footer on mobile, and motion that felt heavy on smaller devices. These are recorded as reported symptoms. Without a trace or a verified diff, this note does not assign one universal root cause or claim a measured performance gain.
+
+## Reproduce the same viewport
+
+Record the page, viewport width and height, zoom, browser, and approximate scroll position. A desktop screenshot of a phone-sized iframe is a layout check, not a substitute for testing touch behavior and performance on a physical phone. Compare the same content state: loaded artwork and delayed fonts can change page height.
+
+## Trace where the space comes from
+
+Inspect the affected element and its ancestors. Compare the grid tracks, minimum height, margins, padding, and reserved artwork area. A large empty region can come from an intentional desktop composition that survives into a stacked layout. Change the responsible constraint rather than applying a large negative margin that hides the symptom at one width.
+
+For horizontal overflow, locate the element whose bounds exceed the viewport. Common candidates are non-wrapping text, wide SVGs, fixed-width controls, and grid children that cannot shrink. Keep wide code and tables scrollable within their own containers instead of clipping the entire page.
+
+## Separate appearance from animation cost
+
+Temporarily pause decorative motion and compare interaction responsiveness. If the page remains slow, investigate scripts and layout rather than assuming the glow is responsible. If it improves, enable effects one at a time. Large blurred surfaces and multiple animated layers deserve profiling; replacing every effect with a transform is not a guarantee of smoothness.
+
+## Verify the fix
+
+Check the smallest supported width, an intermediate width, and desktop. Test long labels, keyboard focus, reduced motion, and an unavailable image. Confirm that the footer remains reachable and the newsletter form is usable. Keep screenshots of the same state before and after a change.
+
+Use the [performance lab](/notes/performance-lab) to record evidence and the [accessibility guide](/notes/accessibility) to ensure a visual improvement does not remove essential interaction.

@@ -1,0 +1,38 @@
+---
+title: "Write a bug report someone can reproduce"
+sidebarTitle: "Useful bug reports"
+description: "Capture expected behavior, actual results, environment, and minimal reproduction steps while keeping private information out of public reports."
+---
+
+A useful report lets another person reproduce the problem or identify the missing evidence. A screenshot alone often shows the symptom without showing its trigger. Start with the smallest example that still fails.
+
+## A report template
+
+```text
+Summary: What fails, and when?
+Environment: Browser, OS, and relevant application version
+Steps:
+1. Open the affected public page.
+2. Perform the smallest action that triggers the issue.
+3. Observe the result.
+Expected: The behavior you expected and why
+Actual: The visible behavior or exact redacted error
+Frequency: Always, intermittent, or only once
+Evidence: Sanitized screenshot, status, or short log excerpt
+```
+
+Name one primary problem. “The mobile menu covers the submit button at 390px width” is easier to investigate than “the site is broken.” If the problem is intermittent, give the approximate time and timezone and explain what changed between successful and failing attempts.
+
+## Remove unrelated details
+
+Try a fresh non-sensitive example. Reduce an API request to the parameters needed to reproduce the behavior. Describe whether extensions, a VPN, or a particular network affect the result without assuming they caused it. Do not erase the original error by repeatedly changing settings before recording it.
+
+## Protect private information
+
+Redact cookies, authorization headers, API keys, confirmation links, personal email addresses, and private administration URLs. Browser network exports can include credentials and request bodies; review them carefully instead of attaching an unfiltered archive. If the issue is a security vulnerability, follow the project’s private reporting instructions rather than posting an exploit with sensitive evidence publicly.
+
+## After reporting
+
+Answer requests for missing details and update the report if you discover a reliable workaround. Keep hypotheses separate from observations. A suspected root cause is useful context, but a reproducible example is stronger evidence.
+
+For this personal website, use [contact](/guides/contact) for ordinary issues and the [security guidance](/maintaining/security) for sensitive reports. For external projects, follow their issue templates and contribution policy. Read [GitHub’s contribution guide](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-open-source) for general etiquette.

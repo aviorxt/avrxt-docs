@@ -1,0 +1,26 @@
+{
+  "exportedAt": "2026-11-06",
+  "source": "https://www.avrxt.dev/docs/admin",
+  "publishedCount": 2,
+  "draftCount": 0,
+  "articles": [
+    {
+      "slug": "welcome",
+      "title": "Welcome To Avrxt Doc's",
+      "description": "Welcome to my personal documentation space 👋",
+      "category": "General",
+      "tags": [
+        "official"
+      ],
+      "content": "# This site is a collection of projects, experiments, notes, guides, and systems that I build, test, and maintain under AVRxT.\n\nEverything here reflects my learning journey, ideas, and real-world implementations in technology\n\n# About This Site\n\n• Document my personal projects\n\n• Share configurations, setups, and experiments\n\n• Keep structured notes for future reference\n\n• Help others who may face similar technical challenges\n\nnote : Some content may be experimental, in progress, or subject to change.\n\n\n![image](https://www.avrxt.dev/assets/logo/avrxt-nexus-ligature.png)"
+    },
+    {
+      "slug": "nxtdev.xyz",
+      "title": "Nxtdev Free Subdomain for Developer's",
+      "description": "The Free Subdomain Platform For Developer's",
+      "category": "Tech ",
+      "tags": [],
+      "content": "🚀 Hey Developers!\n\nNeed a domain for deployment?\nThis one’s just for you 👇\n\n👉 https://nxtdev.xyz\n\n---\n\n🌐 What is nxtdev.xyz?\n\nThe story behind the platform empowering developers with professional subdomains and enterprise-grade DNS.\n\nnxtdev.xyz was born from a simple observation: developers need a quick, secure, and professional way to share their work—without the overhead of buying a new domain every time.\n\nWhether it's a portfolio, a side project, or a staging environment, nxtdev.xyz provides the infrastructure to get it online in seconds ⚡\n\n---\n\n✨ Features\n\n- 🌍 Free Subdomains (up to 2 per user)\n- ⚙️ Full DNS Record Control (A, AAAA, CNAME, TXT, MX, SRV)\n- 🔒 Automated SSL & Proxying\n- 🛡️ Enterprise-Grade Safety Checks\n- 🔁 Nameserver Delegation Support\n- ⚡ Blazing Fast Propagation\n- 👨‍💻 Built for Developers\n\n---\n\n💡 Start building, sharing, and scaling—without limits.\n\n"
+    }
+  ]
+}

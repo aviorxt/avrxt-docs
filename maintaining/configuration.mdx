@@ -1,0 +1,40 @@
+---
+title: "Configuration without exposed secrets"
+description: "Environment groups, browser-visible values, and server-only credentials used by the AVRXT website."
+---
+
+Use the checked-in `.env.example` and each Worker’s Wrangler configuration as the starting points. The names below describe configuration groups; real values do not belong in this documentation.
+
+| Area | Main configuration names |
+| --- | --- |
+| Website | `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_API_URL`, `AUTH_CALLBACK_ORIGIN` |
+| Supabase | Public project/anonymous settings and server-only `SUPABASE_SERVICE_ROLE_KEY` |
+| Owner login | `DISCORD_CLIENT_ID`, `DISCORD_CLIENT_SECRET`, `AUTH_SESSION_SECRET`, configured owner/guild/role identifiers |
+| Guestbook | `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, configured Turnstile values |
+| Cache | `REDIS_REST_URL`, `REDIS_REST_TOKEN`, `REDIS_CACHE_NAMESPACE` |
+| Main email | `RESEND_API_KEY`, `RESEND_AUDIENCE_ID`, verified sender settings |
+| Music | `LASTFM_API_KEY`, optional `LASTFM_USERNAME` |
+| Muzix email | `MUZIX_RESEND_API_KEY`, `MUZIX_NEWSLETTER_SECRET`, `MUZIX_SEGMENT_ID` |
+| Public media | R2 endpoint, access key, secret key, bucket, and public CDN origin |
+| Private storage and notes | Server-only AWS credentials, S3 settings, `NOTES_DYNAMODB_TABLE_NAME` |
+| Search | Public search-only Algolia settings and server-only `ALGOLIA_WRITE_KEY` |
+| Scheduled reconciliation | Server-only `CRON_SECRET` |
+
+## Browser-visible configuration
+
+`NEXT_PUBLIC_` values can be included in browser bundles. Public Supabase anonymous access relies on database policy. Public Algolia configuration must use an index-scoped, search-only key. Service-role, provider, session-signing, and write keys remain server-only.
+
+## Environment separation
+
+Use distinct local, preview, and production secrets and cache namespaces. Verify OAuth callback origins before deploying login changes. Keep Worker bindings and GitHub Actions secrets in the corresponding hosting controls rather than copying them into MDX.
+
+## Verification
+
+Check that a required variable exists without printing its value. Test one relevant read-only operation and inspect sanitized errors. Do not paste environment dumps into support messages.
+
+## Related reading
+
+- [Security](/maintaining/security)
+- [Deployment](/maintaining/deployment)
+- [Architecture](/maintaining/architecture)
+

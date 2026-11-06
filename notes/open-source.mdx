@@ -1,0 +1,35 @@
+---
+title: "Open-source projects worth exploring"
+sidebarTitle: "Open-source directory"
+description: "A practical directory of developer tools for API requests, browser tests, diagrams, JSON processing, repository search, and secret detection."
+---
+
+Choose a project because it solves a specific problem. This directory links to the upstream repositories rather than repackaged downloads or popularity rankings. It is a reading and evaluation list, not an endorsement of every plugin or hosted service associated with a project.
+
+## Tools by task
+
+| Project | Useful for | A small first exercise |
+| --- | --- | --- |
+| [Bruno](https://github.com/usebruno/bruno) | Exploring APIs with file-based collections | Save a public GET request with a non-secret environment |
+| [Playwright](https://github.com/microsoft/playwright) | Browser testing across Chromium, Firefox, and WebKit | Check one public page’s heading and navigation |
+| [Excalidraw](https://github.com/excalidraw/excalidraw) | Sketching a system or interface | Draw a browser, API, and data source with labeled arrows |
+| [Mermaid](https://github.com/mermaid-js/mermaid) | Keeping diagrams as text | Describe a request flow beside its documentation |
+| [jq](https://github.com/jqlang/jq) | Inspecting and transforming JSON | Select two fields from a saved example response |
+| [ripgrep](https://github.com/BurntSushi/ripgrep) | Searching a source tree | Find every reference to an old hostname |
+| [Gitleaks](https://github.com/gitleaks/gitleaks) | Detecting likely secrets | Scan a disposable example repository and inspect findings |
+
+## Evaluate beyond the README
+
+Check the license for the specific component and release you intend to use. Read installation instructions, supported runtimes, release activity, security reporting guidance, and contribution rules. Open source does not necessarily mean every hosted feature or enterprise integration is free. Avoid copying an installation command from an unrelated tutorial when upstream instructions are available.
+
+## Try one real workflow
+
+For an API change, sketch the request flow, save a sanitized request, inspect its JSON, and add a browser test only where browser behavior matters. Each tool should remove friction. If a workflow is already simple and reliable, adding another dependency may not improve it.
+
+Keep private tokens out of request collections, exported diagrams, test recordings, and logs. Secret-scanner findings need review; a clean scan is not proof that a repository contains no sensitive material. If a real credential has been exposed, revoke or rotate it before treating history cleanup as the solution.
+
+## Contribute responsibly
+
+Start with a reproducible bug report, documentation correction, or small test. Read the project’s contribution policy before opening a large change. See [first contributions](/notes/contributing) and [bug reports](/notes/bug-reports).
+
+Repository descriptions reviewed 6 November 2026. Follow upstream releases for current compatibility and installation details. No star counts or performance rankings are used here because they do not establish suitability for your project.

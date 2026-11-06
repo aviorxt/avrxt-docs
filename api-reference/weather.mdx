@@ -1,0 +1,31 @@
+---
+title: "Location and weather reads"
+description: "Validated geocoding and forecast queries passed through the AVRXT Worker to Open-Meteo."
+---
+
+## Find a location
+
+```bash
+curl --get https://api.avrxt.dev/v1/geo/search --data-urlencode "name=London" --data-urlencode "count=5" --data-urlencode "language=en"
+```
+
+`name` is required and limited to 120 characters. `count` is clamped to 1–10, defaulting to 5. An optional `language` uses two letters. The response follows the upstream geocoding service’s JSON.
+
+## Read a forecast
+
+```bash
+curl --get https://api.avrxt.dev/v1/geo/forecast --data-urlencode "latitude=51.5074" --data-urlencode "longitude=-0.1278" --data-urlencode "current=temperature_2m" --data-urlencode "timezone=auto"
+```
+
+Always send explicit numeric coordinates: latitude −90 to 90 and longitude −180 to 180. The adapter forwards validated `current`, `hourly`, `daily`, `timezone`, `forecast_days`, and `past_days` parameters. Oversized or unsupported optional values are not forwarded.
+
+## Freshness and limits
+
+Location searches may be cached for up to one hour and forecasts for up to 15 minutes, subject to a shorter existing response policy. Treat results as informational, not an operational aviation or safety forecast.
+
+## Related reading
+
+- [Origin rules](/api-reference/cors)
+- [Error handling](/api-reference/errors)
+- [Cache policy](/maintaining/caching)
+

@@ -1,0 +1,29 @@
+---
+title: "The owner\u2019s workspace"
+description: "Understand the private dashboard without confusing it with a visitor account or subscription service."
+---
+
+The dashboard is the owner’s administrative workspace. It is not a visitor account area or a subscription product.
+
+## Maintenance features
+
+The current workspace contains the profile editor, personal storage, private notes, guestbook controls, short links, audit logs, and email broadcast tools. Documentation now belongs to its separate Mintlify repository; this migration removes the old docs editor.
+
+## Authorization
+
+Owner/admin access uses configured Discord checks on the server. Current membership or role status is not replaced by a stale client display. Guestbook authentication has a different scope and does not grant administrative access.
+
+## Private data
+
+Private notes are user-scoped in DynamoDB. Personal storage uses S3-backed server operations. Browser users never receive AWS credentials. Short-link management uses the owner’s configured Short.io integration.
+
+## When access fails
+
+An expired session, changed role, unavailable identity provider, or missing configuration can prevent access. Use the normal login flow and its error message. Do not bypass authorization, share session URLs, or copy private credentials into a bug report.
+
+## Related reading
+
+- [Security boundaries](/maintaining/security)
+- [Environment configuration](/maintaining/configuration)
+- [Architecture](/maintaining/architecture)
+

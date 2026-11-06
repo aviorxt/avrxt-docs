@@ -1,0 +1,37 @@
+---
+title: "Debug an API request one layer at a time"
+sidebarTitle: "API debugging"
+description: "Inspect status, headers, response bodies, browser restrictions, and upstream failures without hiding the original error."
+---
+
+An API failure can happen before a request reaches the service, while the service processes it, or while the client interprets the result. Start with evidence from one request rather than changing the frontend, backend, and DNS together.
+
+## Record the request
+
+Capture the method, URL without private query tokens, approximate time, status, and relevant response headers. Use a public read endpoint for an initial check. Do not replay a subscription, payment, deletion, or other state-changing request just to see whether it succeeds twice.
+
+## Inspect HTTP before JSON
+
+This JavaScript example uses the website’s public health route. Run it in a local Node environment supporting fetch; it does not require an API credential.
+
+```javascript
+const response = await fetch('https://api.avrxt.dev/v1/health');
+const body = await response.text();
+console.log(response.status, response.headers.get('content-type'));
+console.log(body);
+if (!response.ok) throw new Error(`HTTP ${response.status}`);
+```
+
+Reading text first helps reveal an HTML error page that would otherwise appear as a JSON parsing failure. For an application, handle the error deliberately rather than logging a sensitive response body in production. A successful HTTP response still needs validation against the expected data shape.
+
+## Compare environments
+
+If a server-side request works but a browser request fails, inspect the browser’s network panel and origin policy. CORS is a browser access control mechanism, not a replacement for authentication. A preflight can fail before the application request is sent. Do not disable browser protections as a deployment fix.
+
+## Handle time and retries
+
+A timeout means the client stopped waiting; it does not always prove the server did nothing. Retry safe reads conservatively and respect rate-limit instructions. For writes, establish idempotency or check the operation’s result before retrying. Never turn every failure into a rapid automatic retry loop.
+
+## Narrow the report
+
+Compare one working and one failing case, removing unrelated parameters. Include a sanitized reproduction and the observed status in a [bug report](/notes/bug-reports). Read the [API reference](/api-reference/overview), [CORS guide](/api-reference/cors), and [MDN HTTP overview](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview) for the underlying model.

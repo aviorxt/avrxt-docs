@@ -1,0 +1,31 @@
+---
+title: "Small developer projects you can finish"
+sidebarTitle: "Practical project ideas"
+description: "Build a focused developer utility with a clear completion point, meaningful failure handling, and an honest README."
+---
+
+A side project becomes useful when it has a small audience, one main task, and a clear definition of done. These are project prompts, not claims that AVRXT has already built or released each one.
+
+## A documentation link checker
+
+Start with Markdown files in one directory. Extract local links, resolve relative paths, and report missing targets with filenames. Finish when a known good fixture passes and a deliberately broken fixture produces a useful error. Keep remote HTTP checks optional: rate limits, redirects, and temporary outages need a different policy from local file existence.
+
+## A sanitized API response viewer
+
+Accept a pasted JSON example and show a formatted view with validation errors. Keep the first version entirely local in the browser. Finish when malformed JSON is explained without losing the input and large examples have a sensible size limit. Do not quietly upload pasted tokens or customer data to a server.
+
+## A personal release notebook
+
+Store dated Markdown entries with a title, affected area, validation, and rollback note. Generate an index sorted by date. Finish when an entry can be added without editing several navigation files. Distinguish prepared changes from verified releases, as the [technical log](/notes/technical-log) does.
+
+## A screenshot comparison helper
+
+Capture a small set of public pages at fixed viewport sizes in a test environment. Begin with manual review rather than inventing a perfect visual-diff threshold. Finish when a layout regression is visible and dynamic timestamps or animations are controlled. Avoid collecting private page content or credentials in test artifacts.
+
+## A domain configuration notebook
+
+Document the purpose of each DNS record using example domains and a redacted export. Explain what must remain unchanged during a hosting migration. Finish when another developer can distinguish web hosting, inbound mail, and outbound authentication from the notes. It should not automatically modify live DNS in its first version.
+
+## Ship the smallest complete version
+
+Write a README explaining the problem, setup, example input, expected output, limitations, and license. Add tests that demonstrate behavior rather than mirror implementation. Include a failure case and a screenshot where useful. Use the [open-source directory](/notes/open-source) to choose supporting tools, and [contribution guidance](/notes/contributing) before publishing work derived from another project.

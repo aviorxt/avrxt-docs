@@ -1,0 +1,32 @@
+---
+title: "Custom-domain email with Cloudflare routing"
+sidebarTitle: "Cloudflare email routing"
+description: "Forward domain email to an existing inbox, test delivery, and choose a separate authenticated outbound sender."
+---
+
+A domain address, a mailbox, and an outbound sender are separate pieces. Routing can forward mail for `hello@example.com` to an inbox you already use. It does not by itself create a mailbox with storage, IMAP, or an SMTP password. You still need to own the domain; free forwarding does not make domain registration free.
+
+## Before changing DNS
+
+Inspect the existing MX records and identify who receives mail today. Export the current configuration and keep access to the old mailbox during testing. If mail already works, plan a migration instead of replacing records casually. Mixing unrelated MX configurations does not reliably route individual addresses to different providers.
+
+## Configure incoming mail
+
+<Steps>
+<Step title="Verify the destination">Open your domain’s email routing setup in Cloudflare. Add an inbox you control and complete its verification message.</Step>
+<Step title="Review the DNS records">Apply the exact records Cloudflare gives your domain, checking for conflicts with existing mail. Preserve unrelated records.</Step>
+<Step title="Create an explicit address">Route a named alias to the verified destination. Start with specific addresses rather than a catch-all, which can attract unwanted mail.</Step>
+<Step title="Test independently">Send from a different account, then check both the inbox and spam folder. Test replies separately and inspect the visible sender.</Step>
+</Steps>
+
+## Sending is separate
+
+An ordinary reply from the destination mailbox may expose its original address. To reply as the domain address, use an outbound provider authorized for that domain and a compatible client. Inspect SPF, DKIM, and DMARC results in a delivered message. Do not add multiple separate SPF records for one hostname.
+
+Cloudflare now documents routing and outbound sending under Email Service. Check sending eligibility and pricing separately: routing availability does not imply unrestricted outbound mail. Gmail aliases also have an approaching support change, explained in the [Gmail SMTP guide](/technical/gmail-smtp).
+
+## Troubleshooting and rollback
+
+Check destination verification, address spelling, routing rules, MX records, spam filtering, and delivery information before changing several settings. Keep the previous DNS configuration so a failed migration can be reversed. DNS caching can delay what individual senders observe.
+
+Reviewed 6 November 2026. Follow the current [Cloudflare Email Service documentation](https://developers.cloudflare.com/email-service/) and [email DNS guidance](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/) for account-specific setup.

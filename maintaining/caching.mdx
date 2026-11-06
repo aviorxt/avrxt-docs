@@ -1,0 +1,37 @@
+---
+title: "Caching with clear boundaries"
+description: "Public freshness limits, internal music caches, private-data exclusions, and Redis failure behavior."
+---
+
+Caching improves the personal website’s responsiveness; it does not turn old data into a live signal or make private data public.
+
+## Worker cache allowlist
+
+| Anonymous successful read | Maximum outer freshness |
+| --- | --- |
+| Gateway root | 60 seconds |
+| Public status and details | 60 seconds |
+| Location search | 3,600 seconds |
+| Forecast | 900 seconds |
+| URL metadata | 3,600 seconds |
+
+A shorter upstream freshness lifetime is preserved. Cookie-bearing or authorized requests, Set-Cookie responses, private/no-store directives, errors, unknown routes, writes, playback, profile configuration, and presence are excluded. WebSocket upgrades remain live.
+
+## Music cache
+
+Recent activity uses a separate 20-second internal cache. Charts and month summaries use 15 minutes. Artwork and exact-name portraits use 24 hours. Outer responses remain uncached. Stale data is labeled explicitly.
+
+## Next.js Redis behavior
+
+Selected public profile and status reads use Redis REST. Namespaces separate environments. Bounded locks coalesce misses; tag generations stop an old fill from repopulating a newer mutation. A cache outage falls back to the source; rate-limit fallback has its own fail-closed policy.
+
+## Documentation after migration
+
+Mintlify owns docs delivery and search. The main application no longer reads or caches CMS articles. Do not preserve an obsolete docs query simply to keep an old cache key populated.
+
+## Related reading
+
+- [Listening freshness](/api-reference/music)
+- [Configuration](/maintaining/configuration)
+- [Troubleshooting](/maintaining/troubleshooting)
+
