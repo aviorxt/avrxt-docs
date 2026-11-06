@@ -1,6 +1,6 @@
 # AVRXT documentation
 
-The standalone Mintlify source for `docs.avrxt.dev`.
+The standalone Mintlify source for https://docs.avrxt.dev. Connected to the existing Mintlify project on the main branch.
 
 ```sh
 npm ci
@@ -22,4 +22,4 @@ The two legacy CMS articles and their original Markdown are preserved in `migrat
 5. Publish the main-site docs removal and redirects only after the custom docs domain works.
 6. Run the existing public search reconciliation to remove stale CMS article hits.
 
-Git connection, live publishing, and DNS cutover have not been performed by the local preparation step. No paid plan is assumed.
+The repository and custom documentation domain are connected. The order above records the migration procedure. Starter ZIP files are delivered through the main website public downloads path. No paid plan is assumed.
